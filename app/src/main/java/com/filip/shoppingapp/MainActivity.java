@@ -58,14 +58,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Toast.makeText(getBaseContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+
             }
         });
 
     }
 
     private void createProduct(String productName, int quantity){
-        db.insertProduct(productName,quantity);
-        arrayOfProducts.add(db.getProduct(db.insertProduct(productName,quantity)));
+        long productID = db.insertProduct(productName,quantity);
+        ShoppingList product = db.getProduct(productID);
+        arrayOfProducts.add(product);
         mAdapter.notifyDataSetChanged();
     }
 
