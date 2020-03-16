@@ -3,6 +3,8 @@ package com.filip.shoppingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,9 +38,24 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (!Character.isDigit(source.charAt(i))) {
+                        Toast.makeText(getApplicationContext(),"Invalid Input",Toast.LENGTH_SHORT).show();
+                        return "";
+                    }
+                }
+                return null;
+            }
+
+        };
+
 
         final EditText productName = (EditText) findViewById(R.id.productName);
         final EditText productQuantity = (EditText) findViewById(R.id.productQuantity);
+        productQuantity.setFilters(new InputFilter[] { filter });
         Button addBtn = (Button) findViewById(R.id.add_button);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Button" ,"Button clicked");
                 Toast.makeText(getApplicationContext(),"Product added", Toast.LENGTH_SHORT).show();
                 String product_name = productName.getText().toString();
-                int product_quantity = Integer.parseInt(productQuantity.getText().toString());
-                createProduct(product_name,product_quantity);
+                String product_quantity = productQuantity.getText().toString();
+                createProduct(product_name,Integer.parseInt(product_quantity));
                 productName.setText("");
                 productQuantity.setText("");
             }
