@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
+                updateProduct(position);
                 Toast.makeText(getBaseContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
 
             }
@@ -85,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
         long productID = db.insertProduct(productName,quantity);
         ShoppingList product = db.getProduct(productID);
         arrayOfProducts.add(product);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    private void updateProduct(int position){
+        ShoppingList product = arrayOfProducts.get(position);
+        product.setQuantity(product.getQuantity()+1);
+        arrayOfProducts.set(position,product);
+        db.updateProduct(product);
         mAdapter.notifyDataSetChanged();
     }
 

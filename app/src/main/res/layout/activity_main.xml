@@ -57,7 +57,7 @@
     <LinearLayout
         android:id="@+id/ListLayout"
         android:layout_width="match_parent"
-        android:layout_height="441dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/productQuantity"
         android:layout_marginTop="53dp"
         android:orientation="vertical">
