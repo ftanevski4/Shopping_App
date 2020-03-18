@@ -10,41 +10,41 @@
         android:id="@+id/add_button"
         android:layout_width="117dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/productName"
+        android:layout_alignBottom="@id/searchBar"
         android:layout_marginStart="26dp"
         android:layout_marginBottom="-57dp"
-        android:layout_toEndOf="@+id/productQuantity"
+        android:layout_toEndOf="@+id/editText"
         android:text="Add " />
 
-    <EditText
-        android:id="@+id/productName"
+    <SearchView
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        android:hint="Add Product" />
+        android:queryHint="Search" />
 
     <EditText
-        android:id="@+id/productQuantity"
+        android:id="@+id/editText"
         android:layout_width="266dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/productName"
+        android:layout_below="@+id/searchBar"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
-        android:hint="Add Quantity"
+        android:hint="Add Product"
         android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/product_separator"
         android:layout_width="match_parent"
         android:layout_height="97dp"
-        android:layout_above="@+id/ListLayout"
-        android:layout_below="@+id/productQuantity"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@+id/editText"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="-48dp"
         android:background="@color/colorPrimary"
@@ -55,10 +55,10 @@
         android:textStyle="bold" />
 
     <LinearLayout
-        android:id="@+id/ListLayout"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="441dp"
-        android:layout_below="@id/productQuantity"
+        android:layout_below="@id/editText"
         android:layout_marginTop="53dp"
         android:orientation="vertical">
 
@@ -66,7 +66,6 @@
             android:id="@+id/shopping_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </LinearLayout>
 
 </RelativeLayout>
