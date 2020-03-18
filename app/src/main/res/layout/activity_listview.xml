@@ -13,16 +13,14 @@
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/quantityView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameView"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:text="TextView" />
 
 </RelativeLayout>
