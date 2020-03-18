@@ -1,38 +1,40 @@
 package com.filip.shoppingapp;
 
-import android.app.Activity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class CustomListAdapter extends ArrayAdapter {
+import com.filip.shoppingapp.database.model.ShoppingList;
 
-    private final Activity context;
-    private final String[] nameArray;
-    private final int[] quantityArray;
+import java.util.ArrayList;
 
-    public CustomListAdapter(Activity context, String[] nameArrayParam, int[] quantityArrayParam){
 
-        super(context,R.layout.activity_listview , nameArrayParam);
+public class CustomListAdapter extends ArrayAdapter<ShoppingList> {
 
-        this.context=context;
-        this.nameArray = nameArrayParam;
-        this.quantityArray = quantityArrayParam;
+    private ArrayList<ShoppingList> productList;
+
+    public CustomListAdapter(MainActivity context, ArrayList<ShoppingList> products) {
+        super(context, 0, products);
     }
-    public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.activity_listview, null,true);
 
 
-        TextView nameTextField = (TextView) rowView.findViewById(R.id.nameView);
-        TextView quantityTextField = (TextView) rowView.findViewById(R.id.quantityView);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-        nameTextField.setText(nameArray[position]);
-        quantityTextField.setText(String.valueOf(quantityArray[position]));
+        ShoppingList product = getItem(position);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_listview, parent, false);
+        }
 
-        return rowView;
+        TextView nameView = (TextView) convertView.findViewById(R.id.nameView);
+        TextView quantityView = (TextView) convertView.findViewById(R.id.quantityView);
 
-    };
+        nameView.setText(product.getName());
+        quantityView.setText(String.valueOf(product.getQuantity()));
+
+        return convertView;
+    }
 }
