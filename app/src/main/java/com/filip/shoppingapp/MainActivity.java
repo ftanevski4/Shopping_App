@@ -80,16 +80,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
-
-                deleteProduct(pos);
-                return true;
-            }
-        });
-
     }
 
     private void createProduct(String productName, int quantity){
@@ -104,13 +94,6 @@ public class MainActivity extends AppCompatActivity {
         product.setQuantity(product.getQuantity()+1);
         arrayOfProducts.set(position,product);
         db.updateProduct(product);
-        mAdapter.notifyDataSetChanged();
-    }
-
-    public void deleteProduct(int position){
-        ShoppingList product = arrayOfProducts.get(position);
-        db.deleteProduct(product);
-        arrayOfProducts.remove(position);
         mAdapter.notifyDataSetChanged();
     }
 
