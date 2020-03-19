@@ -33,7 +33,7 @@ public class CustomListAdapter extends ArrayAdapter<ShoppingList> {
         TextView quantityView = (TextView) convertView.findViewById(R.id.quantityView);
 
         nameView.setText(product.getName());
-        quantityView.setText("Quantity: "+String.valueOf(product.getQuantity()));
+        quantityView.setText(String.valueOf(product.getQuantity()));
 
         return convertView;
     }

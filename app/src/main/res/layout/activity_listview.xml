@@ -2,11 +2,10 @@
 <!--  Single List Item Design -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:orientation="horizontal"
     android:padding="10dip">
 
@@ -14,7 +13,6 @@
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
         android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -23,17 +21,8 @@
         android:id="@+id/quantityView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="34dp"
+        android:layout_below="@+id/nameView"
+        android:layout_marginTop="16dp"
         android:text="TextView" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="75dp"
-        android:layout_height="57dp"
-        app:srcCompat="@drawable/shopping" />
 
 </RelativeLayout>
