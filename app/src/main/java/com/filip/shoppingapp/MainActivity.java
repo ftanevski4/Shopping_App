@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 updateProduct(position);
-                Toast.makeText(getBaseContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -84,14 +82,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int pos, long id) {
-
                 deleteProduct(pos);
                 return true;
             }
         });
 
     }
-
+    
     private void createProduct(String productName, int quantity){
         long productID = db.insertProduct(productName,quantity);
         ShoppingList product = db.getProduct(productID);
